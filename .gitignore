@@ -1,28 +1,15 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+bin/
+cocos2d/cocos/2d/Debug.win32/
+cocos2d/cocos/editor-support/spine/proj.win32/Debug.win32/
+cocos2d/external/Box2D/proj.win32/Debug.win32/
+cocos2d/external/bullet/proj.win32/Debug.win32/
+cocos2d/external/recast/proj.win32/Debug.win32/
+proj.android/assets/
+proj.android/bin/
+proj.android/obj/
+proj.win32/.vs/
+proj.win32/Debug.win32/
+proj.win32/Landlord.sdf
+proj.win32/Landlord.v12.suo
+proj.win32/Landlord.VC.opendb
+proj.win32/Landlord.opensdf
