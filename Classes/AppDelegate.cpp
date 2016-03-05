@@ -1,7 +1,10 @@
-#include "AppDelegate.h"
-#include "HelloWorldScene.h"
+﻿#include "AppDelegate.h"
+#include "LoadingScene.h"
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 
-static Size designResolutionSize = Size(480, 320);
+static Size realResolutionSize = Size(640, 360);
+static Size designResolutionSize = Size(1280, 720);
 static Size smallResolutionSize  = Size(480, 320);
 static Size mediumResolutionSize = Size(1024, 768);
 static Size largeResolutionSize  = Size(2048, 1536);
@@ -34,7 +37,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     if(!glview)
 	{
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("Landlord", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+        glview = GLViewImpl::createWithRect("Landlord", Rect(0, 0, realResolutionSize.width, realResolutionSize.height));
 #else
         glview = GLViewImpl::create("Landlord");
 #endif
@@ -42,7 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     }
 
     director->setDisplayStats(true);
-    director->setAnimationInterval(1.0 / 60);
+    director->setAnimationInterval(1.0f / 60);
     glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
 
     Size frameSize = glview->getFrameSize();
@@ -61,7 +64,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     register_all_packages();
 
-    auto scene = HelloWorld::createScene();
+    auto scene = LoadingScene::createScene();
     director->runWithScene(scene);
 
     return true;
@@ -70,11 +73,11 @@ bool AppDelegate::applicationDidFinishLaunching()
 void AppDelegate::applicationDidEnterBackground()
 {
     Director::getInstance()->stopAnimation();
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 void AppDelegate::applicationWillEnterForeground()
 {
     Director::getInstance()->startAnimation();
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
